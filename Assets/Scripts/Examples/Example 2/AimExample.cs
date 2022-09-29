@@ -9,6 +9,9 @@ public class AimExample : MonoBehaviour
     private PlayerInterpolation _interpolationManager;
     private bool _aiming;
 
+
+    public bool Aiming => _aiming;
+
     private void OnEnable() => aimAction.Enable();
 
     private void OnDisable() => aimAction.Disable();

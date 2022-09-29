@@ -235,4 +235,112 @@ public static class InterpolationTransitions
         return Vector3.Lerp(start, end, t);
     }
 
+    
+    public static CustomPositionInterpolation GetInterpolationPosition(Interpolation interpolation, Easing easing)
+    {
+        if (interpolation == Interpolation.EASE)
+        {
+            switch (easing)
+            {
+                case Easing.BOUNCE_IN:
+                    return InterpolationTransitions.EaseInBounce;
+                
+                case Easing.BOUNCE_OUT:
+                    return InterpolationTransitions.EaseOutBounce;
+                
+                case Easing.SPRING:
+                    return InterpolationTransitions.EaseSpringPosition;
+                
+                case Easing.BACK:
+                    return InterpolationTransitions.EaseBackPosition;
+                
+                case Easing.SINE:
+                    return InterpolationTransitions.EaseSinePosition;
+                
+                case Easing.CUBIC:
+                    return InterpolationTransitions.EaseCubicPosition;
+                
+                case Easing.CIRCLE:
+                    return InterpolationTransitions.EaseCirclePosition;
+                
+                case Easing.ELASTIC:
+                    return InterpolationTransitions.EaseElasticPosition;
+                
+                case Easing.QUARTIC:
+                    return InterpolationTransitions.EaseQuarticPosition;
+                
+                case Easing.QUINTIC:
+                    return InterpolationTransitions.EaseQuinticPosition;
+                
+                case Easing.QUADRATIC:
+                    return InterpolationTransitions.EaseQuadraticPosition;
+
+                case Easing.EXPONENTIAL:
+                    return InterpolationTransitions.EaseExponentialPosition;
+            }
+        }
+        else
+        {
+            switch (interpolation)
+            {
+                case Interpolation.SMOOTH:
+                    return InterpolationTransitions.SmoothPosition;
+                
+                case Interpolation.LINEAR:
+                    return InterpolationTransitions.LinearPosition;
+            }
+        }
+
+        return null;
+    }
+    
+    
+    public static CustomRotationInterpolation GetInterpolationRotation(Interpolation interpolation, Easing easing)
+    {
+        if (interpolation == Interpolation.EASE)
+        {
+            switch (easing)
+            {
+                case Easing.BACK:
+                    return InterpolationTransitions.EaseBackRotation;
+                
+                case Easing.SINE:
+                    return InterpolationTransitions.EaseSineRotation;
+                
+                case Easing.CUBIC:
+                    return InterpolationTransitions.EaseCubicRotation;
+                
+                case Easing.CIRCLE:
+                    return InterpolationTransitions.EaseCircleRotation;
+                
+                case Easing.ELASTIC:
+                    return InterpolationTransitions.EaseElasticRotation;
+                
+                case Easing.QUARTIC:
+                    return InterpolationTransitions.EaseQuarticRotation;
+                
+                case Easing.QUINTIC:
+                    return InterpolationTransitions.EaseQuinticRotation;
+                
+                case Easing.QUADRATIC:
+                    return InterpolationTransitions.EaseQuadraticRotation;
+
+                case Easing.EXPONENTIAL:
+                    return InterpolationTransitions.EaseExponentialRotation;
+            }
+        }
+        else
+        {
+            switch (interpolation)
+            {
+                case Interpolation.SMOOTH:
+                    return InterpolationTransitions.SmoothRotation;
+                
+                case Interpolation.LINEAR:
+                    return InterpolationTransitions.LinearRotation;
+            }
+        }
+
+        return null;
+    }
 }
