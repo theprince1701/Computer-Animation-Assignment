@@ -71,6 +71,7 @@ public static class Utility
     }
 
     
+    /*/
     public static float CalculateInterpolation(InterpolationBase interpolation, float origin, float end, float t)
     {
         float y = 0.0f;
@@ -107,6 +108,8 @@ public static class Utility
         return y;
     }
     
+    /*/
+    
     public delegate float EasingMethod(float t);
     
     public static EasingMethod[] easings = new EasingMethod[9]
@@ -121,6 +124,7 @@ public static class Utility
         Utility.EaseBack,
         Utility.EaseElastic
     };
+    
     
     public static float EaseSine(float t)
     {

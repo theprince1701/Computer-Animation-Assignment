@@ -12,25 +12,23 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump")] 
     
     [SerializeField] private float jumpPower;
-
-     public InterpolationBase anticipationProperties;
-     public InterpolationBase jumpProperties;
-     public InterpolationBase landProperties;
-    
-    
     private Rigidbody _rigidbody;
-
     private Vector3 _defaultScale;
+
+    private PlayerInterpolation _playerInterpolation;
     private bool _grounded;
     private bool _jumpInProgress;
     private bool _anticipationInProgress;
 
-    private InterpolationBase _currentInterpolation;
- 
+    private float _anticipationTimer;
+
+    private bool _sentCall;
+    
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _defaultScale = transform.localScale;
+        _playerInterpolation = GetComponent<PlayerInterpolation>();
     }
     
     private void OnEnable()
@@ -47,48 +45,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (jumpAction.IsPressed())
         {
-            SwitchCurrentInterpolation(anticipationProperties);
-            _anticipationInProgress = true;
+            if (!_sentCall)
+            {
+                _playerInterpolation.SetInterpolation("jump_anticipation");
+                _sentCall = true;
+            }
+
+            _anticipationTimer += Time.deltaTime;
         }
         else
         {
-            if (_anticipationInProgress)
+            if (_sentCall && !_jumpInProgress)
             {
-                SwitchCurrentInterpolation(jumpProperties);
-                _anticipationInProgress = false;
+                _playerInterpolation.SetInterpolation("jump_inair");
+                _rigidbody.AddForce(Vector3.up * (_anticipationTimer * jumpPower), ForceMode.Impulse);
+                _anticipationTimer = 0.0f;
+                _sentCall = false;
                 _jumpInProgress = true;
             }
         }
-        
-        
-        if(_currentInterpolation != null)
-            _currentInterpolation.UpdateInterpolation();
-        
-        RaycastHit hit;
-        _grounded = Physics.Raycast(transform.position, -transform.up, out hit, 0.5f);
-    }
-
-    public void OnCollisionEnter(Collision collisionInfo)
-    {
-        if (!_jumpInProgress)
-            return;
-        
-        Debug.Log("land");
-        SwitchCurrentInterpolation(landProperties);
-        _jumpInProgress = false;
-    }
-
-    public void SwitchCurrentInterpolation(InterpolationBase nextInterpolation)
-    {
-        if (_currentInterpolation == nextInterpolation)
-            return;
-        
-        if(_currentInterpolation != null)
-            _currentInterpolation.ExitInterpolation();
-
-        _currentInterpolation = nextInterpolation;
-        
-        if(_currentInterpolation)
-            _currentInterpolation.StartInterpolation(transform);
     }
 }
