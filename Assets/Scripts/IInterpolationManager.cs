@@ -11,6 +11,3 @@ public interface IInterpolationManager
 
 public delegate Vector3 CustomPositionInterpolation(Vector3 from, Vector3 to, float lerp);
 public delegate Quaternion CustomRotationInterpolation(Quaternion from, Quaternion to, float lerp);
-
-
-

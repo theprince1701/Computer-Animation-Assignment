@@ -182,7 +182,7 @@ MonoBehaviour:
     scale: {x: 0, y: 0, z: 0}
     time: 0.35
     interpolation: 2
-    easing: 0
+    easing: 3
     curve:
       serializedVersion: 2
       m_Curve: []
@@ -195,7 +195,7 @@ MonoBehaviour:
     scale: {x: 0, y: 0, z: 0}
     time: 0.2
     interpolation: 2
-    easing: 0
+    easing: 3
     curve:
       serializedVersion: 2
       m_Curve: []
@@ -306,6 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 286515166}
+  - component: {fileID: 286515167}
   m_Layer: 0
   m_Name: Example 1 (Squash/Stretch)
   m_TagString: Untagged
@@ -332,6 +333,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &286515167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286515165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ab44c77804b7145b65e9554d534fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exampleName: Squash/Stretch
 --- !u!1001 &319584609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -866,7 +880,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 677837953}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1895676204}
+        m_TargetAssemblyTypeName: ExampleManager, Assembly-CSharp
+        m_MethodName: NextExample
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &677837953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1123,7 +1149,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 805306642}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1895676204}
+        m_TargetAssemblyTypeName: ExampleManager, Assembly-CSharp
+        m_MethodName: PreviousExample
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &805306642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1597,7 +1635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1247404660}
   - component: {fileID: 1247404659}
-  - component: {fileID: 1247404658}
+  - component: {fileID: 1247404661}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1605,25 +1643,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1247404658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247404657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &1247404659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1654,6 +1673,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1247404661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247404657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
 --- !u!1 &1334680149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,6 +1710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1334680150}
+  - component: {fileID: 1334680151}
   m_Layer: 0
   m_Name: Example 2 (FPS)
   m_TagString: Untagged
@@ -1688,6 +1736,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1334680151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334680149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ab44c77804b7145b65e9554d534fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exampleName: FPS
 --- !u!1 &1478187987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,6 +2060,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1895676203}
+  - component: {fileID: 1895676204}
   m_Layer: 0
   m_Name: ExampleManager
   m_TagString: Untagged
@@ -2022,6 +2084,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1895676204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895676202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df856af9519f07d4c85ea7974becf04f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  examples:
+  - {fileID: 286515167}
+  - {fileID: 1334680151}
 --- !u!1 &2126411819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2184,24 +2261,42 @@ MonoBehaviour:
   interpolationProperties:
   - id: jump_anticipation
     position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 90, z: 0}
     scale: {x: 1, y: 0.3, z: 1}
     time: 2
     interpolation: 0
-    easing: 0
+    easing: 3
     curve:
       serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 0
-      m_PostInfinity: 0
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
       m_RotationOrder: 0
   - id: jump_inair
     position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
-    scale: {x: 1, y: 2.5, z: 1}
-    time: 1.35
+    rotation: {x: -90, y: 180, z: 90}
+    scale: {x: 1, y: 7, z: 1}
+    time: 4
     interpolation: 2
-    easing: 0
+    easing: 3
     curve:
       serializedVersion: 2
       m_Curve: []
@@ -2210,11 +2305,11 @@ MonoBehaviour:
       m_RotationOrder: 0
   - id: jump_land
     position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 90, z: 0}
     scale: {x: 1, y: 1, z: 1}
-    time: 0.1
-    interpolation: 0
-    easing: 0
+    time: 0.45
+    interpolation: 2
+    easing: 3
     curve:
       serializedVersion: 2
       m_Curve: []

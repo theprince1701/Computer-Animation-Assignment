@@ -12,6 +12,9 @@ public enum Interpolation
 
 public enum Easing
 {
+    BOUNCE_IN,
+    BOUNCE_OUT,
+    SPRING,
     SINE,
     QUADRATIC,
     CUBIC,

@@ -2,6 +2,15 @@ using UnityEngine;
 
 public static class InterpolationTransitions
 {
+    public static Vector3 EaseSpringPosition(Vector3 start, Vector3 end, float value)
+    {
+        value = Mathf.Clamp01(value);
+        value = (Mathf.Sin(value * Mathf.PI * (0.2f + 2.5f * value * value * value)) * Mathf.Pow(1f - value, 2.2f) + value) * (1f + (1.2f * (1f - value)));
+        float t = start.magnitude + (end.magnitude - start.magnitude) * value;
+
+        return Vector3.Lerp(start, end, t);
+    }
+    
     public static Vector3 LinearPosition(Vector3 start, Vector3 end, float time)
     {
         return Vector3.Lerp(start, end, time);
@@ -192,4 +201,38 @@ public static class InterpolationTransitions
         
         return Quaternion.Lerp(start, end, t);
     }
+    
+    public static Vector3 EaseInBounce(Vector3 start, Vector3 end, float time)
+    {
+        float d = 1f;
+        return end - EaseOutBounce(Vector3.zero, end, d - time) + start;
+    }
+
+    public static Vector3 EaseOutBounce(Vector3 start, Vector3 end, float value)
+    {
+        value /= 1f;
+        float t = 0.0f;
+        if (value < (1 / 2.75f))
+        {
+            t = end.magnitude * (7.5625f * value * value) + start.magnitude;
+        }
+        else if (value < (2 / 2.75f))
+        {
+            value -= (1.5f / 2.75f);
+            t = end.magnitude * (7.5625f * (value) * value + .75f) + start.magnitude;
+        }
+        else if (value < (2.5 / 2.75))
+        {
+            value -= (2.25f / 2.75f);
+            t = end.magnitude * (7.5625f * (value) * value + .9375f) + start.magnitude;
+        }
+        else
+        {
+            value -= (2.625f / 2.75f);
+            t = end.magnitude * (7.5625f * (value) * value + .984375f) + start.magnitude;
+        }
+
+        return Vector3.Lerp(start, end, t);
+    }
+
 }

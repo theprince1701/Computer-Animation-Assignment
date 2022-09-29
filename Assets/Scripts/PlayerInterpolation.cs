@@ -38,6 +38,15 @@ public class PlayerInterpolation : InterpolationManager
         {
             switch (props.easing)
             {
+                case Easing.BOUNCE_IN:
+                    return InterpolationTransitions.EaseInBounce;
+                
+                case Easing.BOUNCE_OUT:
+                    return InterpolationTransitions.EaseOutBounce;
+                
+                case Easing.SPRING:
+                    return InterpolationTransitions.EaseSpringPosition;
+                
                 case Easing.BACK:
                     return InterpolationTransitions.EaseBackPosition;
                 
