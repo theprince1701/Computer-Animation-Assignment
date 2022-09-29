@@ -30,7 +30,16 @@ public class PlayerMovement : MonoBehaviour
         _defaultScale = transform.localScale;
         _playerInterpolation = GetComponent<PlayerInterpolation>();
     }
-    
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (_grounded) 
+            return;
+
+        _grounded = true;
+        _playerInterpolation.SetInterpolation("jump_land");
+    }
+
     private void OnEnable()
     {
         jumpAction.Enable();
@@ -49,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 _playerInterpolation.SetInterpolation("jump_anticipation");
                 _sentCall = true;
+                _jumpInProgress = false;
             }
 
             _anticipationTimer += Time.deltaTime;
@@ -62,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
                 _anticipationTimer = 0.0f;
                 _sentCall = false;
                 _jumpInProgress = true;
+                _grounded = false;
             }
         }
     }

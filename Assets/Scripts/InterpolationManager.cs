@@ -98,8 +98,14 @@ public class InterpolationManager : MonoBehaviour, IInterpolationManager
             if (_interpolationDur >= 1f)
             {
                 _interpolationDur = 1f;
-                interpolationTransform.localPosition = _targetPos;
-                interpolationTransform.localRotation = _targetRot;
+                if(_targetPos != Vector3.zero)
+                    interpolationTransform.localPosition = _targetPos;
+                
+                if(_targetRot != Quaternion.identity)
+                    interpolationTransform.localRotation = _targetRot;
+
+                if (_targetScale != Vector3.zero)
+                    interpolationTransform.localScale = _targetScale;
             }
             else
             {

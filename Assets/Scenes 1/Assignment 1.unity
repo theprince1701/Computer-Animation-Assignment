@@ -601,7 +601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &676027500
 AudioListener:
   m_ObjectHideFlags: 0
@@ -986,7 +986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1334680150
 Transform:
   m_ObjectHideFlags: 0
@@ -1246,10 +1246,23 @@ MonoBehaviour:
   - id: jump_inair
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-    time: 1
+    scale: {x: 1, y: 2.5, z: 1}
+    time: 1.35
     interpolation: 2
-    easing: 8
+    easing: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+  - id: jump_land
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    time: 0.1
+    interpolation: 0
+    easing: 0
     curve:
       serializedVersion: 2
       m_Curve: []
