@@ -29,7 +29,7 @@ public class ExampleManager : MonoBehaviour
     public void PreviousExample()
     {
         if (_currentExampleIndex < 0)
-            _currentExampleIndex = examples.Length;
+            _currentExampleIndex = examples.Length - 1;
         
         DisableAllExamples();
         examples[_currentExampleIndex].EnterExample();

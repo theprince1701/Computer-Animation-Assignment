@@ -2,6 +2,13 @@ using UnityEngine;
 
 public static class InterpolationTransitions
 {
+    public static Vector3 EaseSinePosition(Vector3 start, Vector3 end, float time)
+    {
+        float t = -(Mathf.Cos(Mathf.PI * time) - 1.0f) / 2.0f;
+        
+        return Vector3.Lerp(start, end, t);
+    }
+    
     public static Vector3 EaseSpringPosition(Vector3 start, Vector3 end, float value)
     {
         value = Mathf.Clamp01(value);
@@ -33,13 +40,6 @@ public static class InterpolationTransitions
         float t = Mathf.SmoothStep(start.eulerAngles.magnitude, end.eulerAngles.magnitude, time);
         
         return Quaternion.Lerp(start, end, t);
-    }
-    
-    public static Vector3 EaseSinePosition(Vector3 start, Vector3 end, float time)
-    {
-        float t = -(Mathf.Cos(Mathf.PI * time) - 1.0f) / 2.0f;
-        
-        return Vector3.Lerp(start, end, t);
     }
     
     public static Quaternion EaseSineRotation(Quaternion start, Quaternion end, float time)

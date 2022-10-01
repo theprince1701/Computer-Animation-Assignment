@@ -78,7 +78,7 @@ public class InterpolationManager : MonoBehaviour, IInterpolationManager
     public void ResetPose(Vector3 position, CustomPositionInterpolation posInterpolation,
         CustomRotationInterpolation rotInterpolation, Vector3 scale, CustomPositionInterpolation scaleInterpolation, float duration)
     {
-        SetPose(_idlePos, _positionInterpolation, _idleRot, _rotationInterpolation, scale, scaleInterpolation, duration);
+        SetPose(_idlePos, _positionInterpolation, _idleRot, _rotationInterpolation, _idleScale, scaleInterpolation, duration);
     }
     
     public void UpdateInterpolation()
@@ -101,8 +101,7 @@ public class InterpolationManager : MonoBehaviour, IInterpolationManager
                 if(_targetPos != Vector3.zero)
                     interpolationTransform.localPosition = _targetPos;
                 
-                if(_targetRot != Quaternion.identity)
-                    interpolationTransform.localRotation = _targetRot;
+                interpolationTransform.localRotation = _targetRot;
 
                 if (_targetScale != Vector3.zero)
                     interpolationTransform.localScale = _targetScale;
