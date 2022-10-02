@@ -2,29 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Interpolation
-{
-    LINEAR,
-    SMOOTH,
-    EASE,
-    CURVE
-}
-
-public enum Easing
-{
-    BOUNCE_IN,
-    BOUNCE_OUT,
-    SPRING,
-    SINE,
-    QUADRATIC,
-    CUBIC,
-    QUARTIC,
-    QUINTIC,
-    EXPONENTIAL,
-    CIRCLE,
-    BACK,
-    ELASTIC
-}
 public static class Utility
 {
     public static bool InRange(Transform viewer, Transform target, float length, float fov)

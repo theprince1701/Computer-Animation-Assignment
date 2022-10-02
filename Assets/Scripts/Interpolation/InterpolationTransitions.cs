@@ -1,7 +1,74 @@
 using UnityEngine;
 
+
+public enum Interpolation
+{
+    LINEAR,
+    SMOOTH,
+    EASE,
+    CURVE
+}
+
+public enum Easing
+{
+    SWING_ACROSS,
+    SWING_UP,
+    BOUNCE_IN,
+    BOUNCE_OUT,
+    SPRING,
+    SINE,
+    QUADRATIC,
+    CUBIC,
+    QUARTIC,
+    QUINTIC,
+    EXPONENTIAL,
+    CIRCLE,
+    BACK,
+    ELASTIC
+}
+
 public static class InterpolationTransitions
 {
+    public static Vector3 PositionSwingUp(Vector3 source, Vector3 target, float lerp)
+    {
+        return new Vector3(
+            Mathf.Lerp(source.x, target.x, EaseOutQuadraticUnclamped(lerp)),
+            Mathf.Lerp(source.y, target.y, EaseInQuadraticUnclamped(lerp)),
+            Mathf.Lerp(source.z, target.z, lerp)
+        );
+    }
+
+    public static Vector3 PositionSwingAcross(Vector3 source, Vector3 target, float lerp)
+    {
+        return new Vector3(
+            Mathf.Lerp(source.x, target.x, EaseInQuadraticUnclamped(lerp)),
+            Mathf.Lerp(source.y, target.y, EaseOutQuadraticUnclamped(lerp)),
+            Mathf.Lerp(source.z, target.z, lerp)
+        );
+    }
+    
+    public static Quaternion RotationSwingUp(Quaternion source, Quaternion target, float lerp)
+    {
+        Vector3 rotation = new Vector3(
+            Mathf.Lerp(source.x, target.x, EaseOutQuadraticUnclamped(lerp)),
+            Mathf.Lerp(source.y, target.y, EaseInQuadraticUnclamped(lerp)),
+            Mathf.Lerp(source.z, target.z, lerp));
+        
+        return Quaternion.Lerp(source, Quaternion.Euler(rotation), lerp);
+    }
+
+    public static Quaternion RotationSwingAcross(Quaternion source, Quaternion target, float lerp)
+    {
+        Vector3 rotation =  new Vector3(
+            Mathf.Lerp(source.x, target.x, EaseInQuadraticUnclamped(lerp)),
+            Mathf.Lerp(source.y, target.y, EaseOutQuadraticUnclamped(lerp)),
+            Mathf.Lerp(source.z, target.z, lerp)
+        );
+        
+        return Quaternion.Lerp(source, Quaternion.Euler(rotation), lerp);
+    }
+
+    
     public static Vector3 EaseSinePosition(Vector3 start, Vector3 end, float time)
     {
         float t = -(Mathf.Cos(Mathf.PI * time) - 1.0f) / 2.0f;
@@ -234,6 +301,18 @@ public static class InterpolationTransitions
 
         return Vector3.Lerp(start, end, t);
     }
+    
+    
+    public static float EaseInQuadraticUnclamped(float x)
+    {
+        return x * x;
+    }
+    
+    public static float EaseOutQuadraticUnclamped(float x)
+    {
+        float y = 1f - x;
+        return 1f - (y * y);
+    }
 
     
     public static CustomPositionInterpolation GetInterpolationPosition(Interpolation interpolation, Easing easing)
@@ -242,41 +321,48 @@ public static class InterpolationTransitions
         {
             switch (easing)
             {
+                
+                case Easing.SWING_UP:
+                    return PositionSwingUp;
+                
+                case Easing.SWING_ACROSS:
+                    return PositionSwingAcross;
+                
                 case Easing.BOUNCE_IN:
-                    return InterpolationTransitions.EaseInBounce;
+                    return EaseInBounce;
                 
                 case Easing.BOUNCE_OUT:
-                    return InterpolationTransitions.EaseOutBounce;
+                    return EaseOutBounce;
                 
                 case Easing.SPRING:
-                    return InterpolationTransitions.EaseSpringPosition;
+                    return EaseSpringPosition;
                 
                 case Easing.BACK:
-                    return InterpolationTransitions.EaseBackPosition;
+                    return EaseBackPosition;
                 
                 case Easing.SINE:
-                    return InterpolationTransitions.EaseSinePosition;
+                    return EaseSinePosition;
                 
                 case Easing.CUBIC:
-                    return InterpolationTransitions.EaseCubicPosition;
+                    return EaseCubicPosition;
                 
                 case Easing.CIRCLE:
-                    return InterpolationTransitions.EaseCirclePosition;
+                    return EaseCirclePosition;
                 
                 case Easing.ELASTIC:
-                    return InterpolationTransitions.EaseElasticPosition;
+                    return EaseElasticPosition;
                 
                 case Easing.QUARTIC:
-                    return InterpolationTransitions.EaseQuarticPosition;
+                    return EaseQuarticPosition;
                 
                 case Easing.QUINTIC:
-                    return InterpolationTransitions.EaseQuinticPosition;
+                    return EaseQuinticPosition;
                 
                 case Easing.QUADRATIC:
-                    return InterpolationTransitions.EaseQuadraticPosition;
+                    return EaseQuadraticPosition;
 
                 case Easing.EXPONENTIAL:
-                    return InterpolationTransitions.EaseExponentialPosition;
+                    return EaseExponentialPosition;
             }
         }
         else
@@ -284,10 +370,10 @@ public static class InterpolationTransitions
             switch (interpolation)
             {
                 case Interpolation.SMOOTH:
-                    return InterpolationTransitions.SmoothPosition;
+                    return SmoothPosition;
                 
                 case Interpolation.LINEAR:
-                    return InterpolationTransitions.LinearPosition;
+                    return LinearPosition;
             }
         }
 
@@ -301,32 +387,39 @@ public static class InterpolationTransitions
         {
             switch (easing)
             {
+                
+                case Easing.SWING_UP:
+                    return RotationSwingUp;
+                
+                case Easing.SWING_ACROSS:
+                    return RotationSwingAcross;
+                
                 case Easing.BACK:
-                    return InterpolationTransitions.EaseBackRotation;
+                    return EaseBackRotation;
                 
                 case Easing.SINE:
-                    return InterpolationTransitions.EaseSineRotation;
+                    return EaseSineRotation;
                 
                 case Easing.CUBIC:
-                    return InterpolationTransitions.EaseCubicRotation;
+                    return EaseCubicRotation;
                 
                 case Easing.CIRCLE:
-                    return InterpolationTransitions.EaseCircleRotation;
+                    return EaseCircleRotation;
                 
                 case Easing.ELASTIC:
-                    return InterpolationTransitions.EaseElasticRotation;
+                    return EaseElasticRotation;
                 
                 case Easing.QUARTIC:
-                    return InterpolationTransitions.EaseQuarticRotation;
+                    return EaseQuarticRotation;
                 
                 case Easing.QUINTIC:
-                    return InterpolationTransitions.EaseQuinticRotation;
+                    return EaseQuinticRotation;
                 
                 case Easing.QUADRATIC:
-                    return InterpolationTransitions.EaseQuadraticRotation;
+                    return EaseQuadraticRotation;
 
                 case Easing.EXPONENTIAL:
-                    return InterpolationTransitions.EaseExponentialRotation;
+                    return EaseExponentialRotation;
             }
         }
         else
@@ -334,10 +427,10 @@ public static class InterpolationTransitions
             switch (interpolation)
             {
                 case Interpolation.SMOOTH:
-                    return InterpolationTransitions.SmoothRotation;
+                    return SmoothRotation;
                 
                 case Interpolation.LINEAR:
-                    return InterpolationTransitions.LinearRotation;
+                    return LinearRotation;
             }
         }
 

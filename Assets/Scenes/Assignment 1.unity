@@ -275,7 +275,7 @@ MonoBehaviour:
     scale: {x: 0.1, y: 0.1, z: 0.1}
     time: 0.35
     interpolation: 2
-    easing: 3
+    easing: 1
     curve:
       serializedVersion: 2
       m_Curve: []
@@ -288,7 +288,7 @@ MonoBehaviour:
     scale: {x: 0.1, y: 0.1, z: 0.1}
     time: 0.2
     interpolation: 2
-    easing: 3
+    easing: 5
     curve:
       serializedVersion: 2
       m_Curve: []
@@ -2569,7 +2569,7 @@ MonoBehaviour:
     scale: {x: 1, y: 0.3, z: 1}
     time: 2
     interpolation: 2
-    easing: 3
+    easing: 1
     curve:
       serializedVersion: 2
       m_Curve:
@@ -2600,7 +2600,7 @@ MonoBehaviour:
     scale: {x: 1, y: 7, z: 1}
     time: 4
     interpolation: 2
-    easing: 3
+    easing: 7
     curve:
       serializedVersion: 2
       m_Curve: []
@@ -2613,7 +2613,7 @@ MonoBehaviour:
     scale: {x: 1, y: 1, z: 1}
     time: 0.45
     interpolation: 2
-    easing: 3
+    easing: 5
     curve:
       serializedVersion: 2
       m_Curve: []

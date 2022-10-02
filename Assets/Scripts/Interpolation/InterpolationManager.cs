@@ -32,9 +32,9 @@ public class InterpolationManager : MonoBehaviour, IInterpolationManager
         _sourceRot = _targetRot;
         _sourceScale = _targetScale;
 
-        interpolationTransform.localPosition = _targetPos;
-        interpolationTransform.localRotation = _targetRot;
-        interpolationTransform.localScale = _targetScale;
+        interpolationTransform.localPosition = _idlePos;
+        interpolationTransform.localRotation = _idleRot;
+        interpolationTransform.localScale = _idleScale;
 
         _positionInterpolation = null;
         _positionInterpolation = null;
@@ -45,6 +45,7 @@ public class InterpolationManager : MonoBehaviour, IInterpolationManager
     {
         _idlePos = interpolationTransform.localPosition;
         _idleRot = interpolationTransform.localRotation;
+        _idleScale = interpolationTransform.localScale;
     }
 
     public void SetPose(Vector3 position, CustomPositionInterpolation posInterpolation, Quaternion rotation,
