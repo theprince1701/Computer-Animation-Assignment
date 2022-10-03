@@ -99,6 +99,7 @@ public class InterpolationManager : MonoBehaviour, IInterpolationManager
             if (_interpolationDur >= 1f)
             {
                 _interpolationDur = 1f;
+                
                 if(_targetPos != Vector3.zero)
                     interpolationTransform.localPosition = _targetPos;
                 
@@ -106,6 +107,8 @@ public class InterpolationManager : MonoBehaviour, IInterpolationManager
 
                 if (_targetScale != Vector3.zero)
                     interpolationTransform.localScale = _targetScale;
+                
+                interpolationTransform.localRotation = _targetRot;
             }
             else
             {

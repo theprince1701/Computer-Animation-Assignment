@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+/// <summary>
+/// this class is a procedural jump animation showcasing how the Interpolation System can be used
+/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Input")]
@@ -13,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     
     [SerializeField] private float jumpPower;
     private Rigidbody _rigidbody;
-    private Vector3 _defaultScale;
 
     private PlayerInterpolation _playerInterpolation;
     private bool _grounded;
@@ -27,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _defaultScale = transform.localScale;
         _playerInterpolation = GetComponent<PlayerInterpolation>();
     }
 
@@ -35,9 +37,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_grounded) 
             return;
-
-        _grounded = true;
-        _playerInterpolation.SetInterpolation("jump_land");
+        
+        if (_rigidbody.velocity.magnitude <= 1.0f)
+        {
+            
+            _grounded = true;
+            _rigidbody.velocity = Vector3.zero;
+            _playerInterpolation.SetInterpolation("jump_land");
+        }
     }
 
     private void OnEnable()
@@ -52,13 +59,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (jumpAction.IsPressed())
+        if (jumpAction.IsPressed() && _grounded)
         {
             if (!_sentCall)
             {
-                _playerInterpolation.SetInterpolation("jump_anticipation");
-                _sentCall = true;
-                _jumpInProgress = false;
+                SendAnticipationCall();
             }
 
             _anticipationTimer += Time.deltaTime;
@@ -67,13 +72,25 @@ public class PlayerMovement : MonoBehaviour
         {
             if (_sentCall && !_jumpInProgress)
             {
-                _playerInterpolation.SetInterpolation("jump_inair");
-                _rigidbody.AddForce(Vector3.up * (_anticipationTimer * jumpPower), ForceMode.Impulse);
-                _anticipationTimer = 0.0f;
-                _sentCall = false;
-                _jumpInProgress = true;
-                _grounded = false;
+                Jump();
             }
         }
+    }
+
+    private void SendAnticipationCall()
+    {
+        _playerInterpolation.SetInterpolation("jump_anticipation");
+        _sentCall = true;
+        _jumpInProgress = false;
+    }
+
+    private void Jump()
+    {
+        _playerInterpolation.SetInterpolation("jump_inair");
+        _rigidbody.AddForce(Vector3.up * (_anticipationTimer * jumpPower), ForceMode.Impulse);
+        _anticipationTimer = 0.0f;
+        _sentCall = false;
+        _jumpInProgress = true;
+        _grounded = false;
     }
 }

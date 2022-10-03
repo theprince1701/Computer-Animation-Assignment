@@ -11,7 +11,6 @@ using UnityEngine;
      [SerializeField] private InputAction fireAction;
      [SerializeField] private Transform recoilPositionTransform;
      [SerializeField] private Transform recoilRotationTransform;
-
      [SerializeField] private float dampTime;
      [SerializeField] private float recoil1 = 35;
      [SerializeField] private float recoil2 = 50;
@@ -25,10 +24,7 @@ using UnityEngine;
       
      [SerializeField] private Interpolation interpolation;
      [SerializeField] private Easing easing;
-      
-     private Vector3 _recoilAimPosition => recoilPosition / 2f;
-     private Vector3 _recoilAimRotation => recoilRotation / 2f;
- 
+     
      private CustomPositionInterpolation _positionInterpolation;
      private CustomRotationInterpolation _rotationInterpolation;
 
@@ -38,7 +34,7 @@ using UnityEngine;
      private Vector3 _recoil4Pos;
 
      private AimExample _aimExample;
-
+     
      private void Awake()
      {
          fireAction.performed += ctx => UpdateRecoil();
@@ -48,7 +44,7 @@ using UnityEngine;
      private void OnEnable() => fireAction.Enable();
      private void OnDisable() => fireAction.Disable();
 
-     public void UpdateRecoil() 
+     private void UpdateRecoil() 
      {
           _positionInterpolation = InterpolationTransitions.GetInterpolationPosition(interpolation, easing);
           _rotationInterpolation = InterpolationTransitions.GetInterpolationRotation(interpolation, easing);
@@ -56,23 +52,25 @@ using UnityEngine;
           _recoil1Pos += new Vector3(recoilRotation.x, Random.Range(-recoilRotation.y, recoilRotation.y), 
               Random.Range(-recoilRotation.z, recoilRotation.z));
 
-          if (_aimExample.Aiming)
-              _recoil1Pos /= 2;
-          
           _recoil3Pos += new Vector3(Random.Range(-recoilPosition.x, recoilPosition.x), 
               Random.Range(-recoilPosition.y, recoilPosition.y), recoilPosition.z);
 
           if (_aimExample.Aiming)
+          {
               _recoil3Pos /= 2;
+              _recoil1Pos /= 2;
+          }
      }
 
       private void Update()
       {
           if (_positionInterpolation == null || _rotationInterpolation == null)
               return;
-          
-          if(fireAction.IsPressed())
+
+          if (fireAction.IsPressed())
+          {
               UpdateRecoil();
+          }
           
           _recoil1Pos = Vector3.Lerp(_recoil1Pos, Vector3.zero, recoil1 * Time.deltaTime);
           _recoil2Pos = Vector3.Lerp(_recoil2Pos, _recoil1Pos, recoil2 * Time.deltaTime);
