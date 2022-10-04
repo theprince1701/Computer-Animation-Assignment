@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da2deedce1046e489dcff5bb4eb8ee8, type: 3}
   m_Name: Jump
   m_EditorClassIdentifier: 
-  id: 
-  usePosition: 0
-  position: {x: 0, y: 0, z: 0}
-  useRotation: 0
-  rotation: {x: 0, y: 0, z: 0}
-  useScale: 0
-  scale: {x: 0, y: 0, z: 0}
-  time: 0
-  interpolation: 0
-  easing: 0
+  id: jump
+  usePosition: 1
+  position: {x: 0.09242412, y: -0.2386541, z: 0.8342159}
+  useRotation: 1
+  rotation: {x: -5.635, y: 1.052, z: 4.43}
+  useScale: 1
+  scale: {x: 0.1, y: 0.1, z: 0.1}
+  time: 0.45
+  interpolation: 2
+  easing: 5

@@ -269,32 +269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interpolationTransform: {fileID: 8916549146200456432}
   interpolationProperties:
-  - id: aim
-    position: {x: 0, y: -0.196, z: 0.856}
-    rotation: {x: 0, y: 0, z: 0}
-    scale: {x: 0.1, y: 0.1, z: 0.1}
-    time: 0.35
-    interpolation: 2
-    easing: 1
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 0
-      m_PostInfinity: 0
-      m_RotationOrder: 0
-  - id: jump
-    position: {x: 0.1, y: -0.3, z: 0.856}
-    rotation: {x: -4.39, y: 0, z: 8.27}
-    scale: {x: 0.1, y: 0.1, z: 0.1}
-    time: 0.2
-    interpolation: 2
-    easing: 5
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 0
-      m_PostInfinity: 0
-      m_RotationOrder: 0
+  - {fileID: 11400000, guid: 1cfc5d9297dbee04182420ec0d998411, type: 2}
+  - {fileID: 11400000, guid: f901a2186ab66484aab49121da83e3b6, type: 2}
 --- !u!1 &190764206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,6 +1695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
@@ -1735,6 +1712,7 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &1256947034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2563,63 +2541,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interpolationTransform: {fileID: 2126411825}
   interpolationProperties:
-  - id: jump_anticipation
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 90, z: 0}
-    scale: {x: 1, y: 0.3, z: 1}
-    time: 2
-    interpolation: 2
-    easing: 5
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 0
-  - id: jump_inair
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: -90, y: 180, z: 90}
-    scale: {x: 1, y: 7, z: 1}
-    time: 4
-    interpolation: 2
-    easing: 5
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 0
-      m_PostInfinity: 0
-      m_RotationOrder: 0
-  - id: jump_land
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 90, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-    time: 0.45
-    interpolation: 2
-    easing: 5
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 0
-      m_PostInfinity: 0
-      m_RotationOrder: 0
+  - {fileID: 11400000, guid: 33790265fb85a4446a7d864d0914ed0a, type: 2}
+  - {fileID: 11400000, guid: 895112869307abb49b61a67415ab02e3, type: 2}
+  - {fileID: 11400000, guid: 6827bb313a424c54db7cda4d3315987c, type: 2}
 --- !u!1 &11821406515291885
 GameObject:
   m_ObjectHideFlags: 0

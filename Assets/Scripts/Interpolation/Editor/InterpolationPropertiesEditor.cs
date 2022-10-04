@@ -46,6 +46,7 @@ public class InterpolationPropertiesEditor : Editor
             _interpolationProperties.scale =
                 EditorGUILayout.Vector3Field("Interpolation Scale", _interpolationProperties.scale);
         }
-
+        
+        EditorUtility.SetDirty(target);
     }
 }

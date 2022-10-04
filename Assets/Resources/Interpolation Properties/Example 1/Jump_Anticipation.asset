@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da2deedce1046e489dcff5bb4eb8ee8, type: 3}
   m_Name: Jump_Anticipation
   m_EditorClassIdentifier: 
-  id: 
+  id: jump_anticipation
   usePosition: 0
   position: {x: 0, y: 0, z: 0}
-  useRotation: 0
-  rotation: {x: 0, y: 0, z: 0}
-  useScale: 0
-  scale: {x: 0, y: 0, z: 0}
-  time: 0
-  interpolation: 0
-  easing: 0
+  useRotation: 1
+  rotation: {x: 0, y: 90, z: 0}
+  useScale: 1
+  scale: {x: 1, y: 0.3, z: 1}
+  time: 2
+  interpolation: 2
+  easing: 5
