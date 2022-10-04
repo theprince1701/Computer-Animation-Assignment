@@ -5,22 +5,10 @@ using UnityEngine;
 public class PlayerInterpolation : InterpolationManager
 {
     [SerializeField] private InterpolationProperties[] interpolationProperties;
-
-    [Serializable]
-    private struct InterpolationProperties
-    {
-        public string id;
-        public Vector3 position;
-        public Vector3 rotation;
-        public Vector3 scale;
-        public float time;
-
-        public Interpolation interpolation;
-        public Easing easing;
-        public AnimationCurve curve;
-    }
-
+    
     private int _currentInterpolationIndex = -1;
+    
+    
     private void EnterInterpolation(int index)
     {
         if (index == -1)
