@@ -61,7 +61,7 @@ public class InterpolationManager : MonoBehaviour, IInterpolationManager
         
         _positionInterpolation = position == Vector3.zero ? null : posInterpolation;
         _rotationInterpolation =  rotation == Quaternion.identity ? null : rotInterpolation;
-        _scaleInterpolation =  scale == Vector3.zero ? null :scaleInterpolation;
+        _scaleInterpolation =  scale == Vector3.zero ? null : scaleInterpolation;
 
         _interpolationDur = 0f;
 

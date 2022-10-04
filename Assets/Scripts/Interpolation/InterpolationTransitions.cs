@@ -321,7 +321,6 @@ public static class InterpolationTransitions
         {
             switch (easing)
             {
-                
                 case Easing.SWING_UP:
                     return PositionSwingUp;
                 
